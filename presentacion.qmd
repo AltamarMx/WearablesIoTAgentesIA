@@ -86,7 +86,7 @@ Fuentes: Abbott, ADA Consumer Guide, teardown de G. Lui (2022).
 ## Tus datos no son tuyos
 
 - **Lo que mide no es lo que te muestra**: señal cruda a decenas de Hz; tú recibes un *score* sin fórmula
-- **El negocio es la suscripción**: pagas por ver tus propias métricas
+- **El negocio es la suscripción**: Oura ~6 USD/mes, Fitbit Premium ~10 USD/mes, Whoop ~200 USD/año por ver tus propias métricas
 - **Las APIs entregan datos digeridos**, no la señal: nadie puede auditar sesgos
 - **Si la empresa cierra, el dispositivo muere**
 - **Para investigar**: señal cruda, sensores que elegimos, firmware que controlamos… o **construir el propio**
