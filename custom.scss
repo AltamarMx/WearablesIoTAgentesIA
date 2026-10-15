@@ -1,0 +1,224 @@
+/*-- scss:defaults --*/
+
+// Paleta: fondo frío casi blanco, tinta azul-noche y un acento eléctrico
+$bg:       #f6f7fb;
+$bg-2:     #eceef6;             // bloques de código, franjas
+$ink:      #12142b;
+$ink-2:    #5a5f7a;
+$accent:   #5b3df5;             // violeta eléctrico
+$lime:     #c9f26b;             // acento sobre fondos oscuros
+$soft:     #b9b0ff;             // acento suave para la portada
+$dark:     #0f1226;             // portada y láminas oscuras
+$hairline: rgba(18, 20, 43, 0.12);
+
+$font-family-sans-serif: "Inter", "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "IBM Plex Mono", Menlo, Consolas, monospace;
+$presentation-heading-font: "Space Grotesk", "Inter", "Helvetica Neue", Arial, sans-serif;
+
+$body-bg: $bg;
+$body-color: $ink;
+$link-color: $accent;
+$selection-bg: rgba($accent, 0.22);
+
+$presentation-font-size-root: 36px;
+$presentation-line-height: 1.4;
+$presentation-heading-color: $ink;
+$presentation-heading-font-weight: 700;
+$presentation-heading-letter-spacing: -0.025em;
+$presentation-heading-text-transform: none;
+$presentation-heading-line-height: 1.1;
+$presentation-h1-font-size: 2.3em;
+$presentation-h2-font-size: 1.4em;
+$presentation-h3-font-size: 1.1em;
+$presentation-block-margin: 14px;
+$presentation-title-slide-text-align: left;
+
+$code-block-bg: $bg-2;
+$code-block-border-color: transparent;
+$code-block-font-size: 0.6em;
+$code-color: $ink;
+$code-bg: transparent;
+
+// Diagramas mermaid con la misma paleta
+$mermaid-bg-color: $bg;
+$mermaid-edge-color: $ink-2;
+$mermaid-fg-color: $ink;
+$mermaid-fg-color--lighter: $ink-2;
+$mermaid-fg-color--lightest: $hairline;
+$mermaid-font-family: $font-family-sans-serif;
+$mermaid-label-bg-color: $bg;
+$mermaid-label-fg-color: $ink;
+$mermaid-node-bg-color: #e6e2ff;
+$mermaid-node-fg-color: $accent;
+
+/*-- scss:rules --*/
+
+@font-face { font-family: "Space Grotesk"; font-style: normal; font-weight: 500 700; src: url("../../../../../fonts/SpaceGrotesk-500-700.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: normal; font-weight: 400 700; src: url("../../../../../fonts/Inter-400-700.woff2") format("woff2"); }
+@font-face { font-family: "Inter"; font-style: italic; font-weight: 400; src: url("../../../../../fonts/Inter-400i.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; src: url("../../../../../fonts/IBMPlexMono-400.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; src: url("../../../../../fonts/IBMPlexMono-500.woff2") format("woff2"); }
+
+.reveal {
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.reveal strong { font-weight: 650; }
+.reveal em { font-style: italic; }
+
+// Títulos: grotesca pesada, sin adornos; el color lo ponen los acentos
+.reveal h2 {
+  margin-bottom: 0.6em;
+  &:empty { display: none; }
+}
+.reveal h3 { font-weight: 600; letter-spacing: -0.01em; }
+
+// Divisores de sección (nivel 1)
+.reveal .slide.level1 h1 {
+  &::after {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 6px;
+    border-radius: 3px;
+    background: $accent;
+    margin-top: 0.35em;
+  }
+}
+
+// Fondos oscuros: texto claro, acento lima
+.reveal .has-dark-background {
+  color: #f3f4fa;
+  h1, h2, h3, p, li { color: #f3f4fa; }
+  .title::after, h1::after { background: $lime; }
+  a { color: $lime; }
+  li::marker { color: $lime; }
+  div.sourceCode, pre { background: $bg-2; }
+  pre code { color: $ink; }
+  p code:not(.sourceCode), li code:not(.sourceCode) {
+    background: rgba($lime, 0.16);
+    color: $lime;
+  }
+  .footer, .slide-number { color: rgba(243, 244, 250, 0.7); }
+}
+
+// Listas: marcadores en acento
+.reveal ul, .reveal ol { margin-left: 1.1em; }
+.reveal li { margin-bottom: 0.25em; }
+.reveal li::marker { color: $accent; }
+.reveal ol li::marker { font-weight: 700; font-family: $presentation-heading-font; }
+
+// Tablas: encabezado en versalitas suaves, líneas finas
+.reveal table {
+  border-collapse: collapse;
+  margin: 0.4em 0 0.8em;
+  th, td { padding: 0.32em 0.8em 0.32em 0.2em; vertical-align: top; }
+  th {
+    font-family: $presentation-heading-font;
+    font-weight: 600;
+    font-size: 0.8em;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: $ink-2;
+    text-align: left;
+    border-bottom: 2px solid $ink;
+    border-top: none;
+  }
+  td { border-bottom: 1px solid $hairline; }
+  th[style*="text-align: right"], td[style*="text-align: right"] { text-align: right; }
+}
+
+// Código: bloque redondeado sin borde; inline como "pill" en acento
+.reveal div.sourceCode, .reveal pre {
+  border: none;
+  border-radius: 14px;
+  box-shadow: none;
+  background: $bg-2;
+}
+.reveal pre code { padding: 0.9em 1.1em; }
+.reveal code { font-weight: 500; }
+.reveal p code:not(.sourceCode), .reveal li code:not(.sourceCode), .reveal td code:not(.sourceCode) {
+  background: rgba($accent, 0.10);
+  color: darken($accent, 8%);
+  padding: 0.05em 0.35em;
+  border-radius: 6px;
+  font-size: 0.85em;
+}
+
+// Imágenes: esquinas redondeadas, borde apenas visible
+.reveal .slide img {
+  border: 1px solid rgba($ink, 0.08);
+  border-radius: 14px;
+  box-shadow: none;
+}
+
+// Diagramas: etiquetas de aristas sobre el fondo de la lámina
+.reveal .edgeLabel, .reveal .edgeLabel p, .reveal .edgeLabel span { background-color: $bg !important; }
+
+// Columnas con un poco de aire
+.reveal .columns { gap: 1.4em; }
+
+// Portada (fondo oscuro con degradado; ver title-slide-attributes en el qmd)
+#title-slide {
+  .title {
+    font-size: 2.5em;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.02;
+    margin-bottom: 0.4em;
+    &::after {
+      content: "";
+      display: block;
+      width: 1.1em;
+      height: 6px;
+      border-radius: 3px;
+      background: $soft;
+      margin-top: 0.35em;
+    }
+  }
+  .subtitle {
+    font-family: $font-family-sans-serif;
+    font-weight: 400;
+    font-size: 1.0em;
+    color: rgba(243, 244, 250, 0.72);
+    margin-bottom: 1.5em;
+  }
+  .quarto-title-authors { justify-content: flex-start; }
+  .quarto-title-author-name {
+    font-family: $presentation-heading-font;
+    font-size: 0.7em;
+    font-weight: 600;
+  }
+  .date {
+    font-family: $font-family-monospace;
+    font-size: 0.5em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: $soft;
+    margin-top: 0.5em;
+  }
+}
+
+// Referencias al pie de la lámina
+.reveal .slide aside {
+  font-size: 0.5em;
+  color: $ink-2;
+  bottom: 0.6em;
+}
+
+// Pie, número de lámina (chip) y barra de progreso
+.reveal .footer { color: $ink-2; font-size: 0.4em; font-weight: 500; }
+.reveal .slide-number {
+  font-family: $presentation-heading-font;
+  font-weight: 600;
+  font-size: 0.5em;
+  color: $accent;
+  background: rgba($accent, 0.12);
+  border-radius: 999px;
+  padding: 0.3em 0.8em;
+  right: 0.9em;
+  bottom: 0.8em;
+}
+.reveal .progress { color: $accent; height: 4px; }
+.reveal .slide-menu-button .fa-bars::before { color: $ink-2; }

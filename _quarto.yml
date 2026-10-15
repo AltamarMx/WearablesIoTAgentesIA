@@ -2,3 +2,5 @@ project:
   output-dir: docs
   render:
     - presentacion.qmd
+  resources:
+    - fonts/

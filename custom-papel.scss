@@ -1,0 +1,191 @@
+/*-- scss:defaults --*/
+
+// Paleta: papel cálido, tinta y un solo acento
+$paper:    #f4f1ea;
+$paper-2:  #ebe6dc;
+$ink:      #22201c;
+$ink-2:    #5f5a52;
+$accent:   #a24e26;
+$accent-2: #d99a6c;             // acento sobre fondos oscuros
+$hairline: rgba(34, 32, 28, 0.18);
+
+$font-family-sans-serif: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+$font-family-monospace: "IBM Plex Mono", Menlo, Consolas, monospace;
+$presentation-heading-font: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+
+$body-bg: $paper;
+$body-color: $ink;
+$link-color: $accent;
+$selection-bg: rgba($accent, 0.25);
+
+$presentation-font-size-root: 38px;
+$presentation-line-height: 1.35;
+$presentation-heading-color: $ink;
+$presentation-heading-font-weight: 500;
+$presentation-heading-letter-spacing: -0.01em;
+$presentation-heading-text-transform: none;
+$presentation-heading-line-height: 1.15;
+$presentation-h1-font-size: 2.1em;
+$presentation-h2-font-size: 1.3em;
+$presentation-h3-font-size: 1.15em;
+$presentation-block-margin: 14px;
+$presentation-title-slide-text-align: left;
+
+$code-block-bg: $paper-2;
+$code-block-border-color: $hairline;
+$code-block-font-size: 0.6em;
+$code-color: $ink;
+$code-bg: transparent;
+
+// Diagramas mermaid con la misma paleta
+$mermaid-bg-color: $paper;
+$mermaid-edge-color: $ink-2;
+$mermaid-fg-color: $ink;
+$mermaid-fg-color--lighter: $ink-2;
+$mermaid-fg-color--lightest: $hairline;
+$mermaid-font-family: $font-family-sans-serif;
+$mermaid-label-bg-color: $paper;
+$mermaid-label-fg-color: $ink-2;
+$mermaid-node-bg-color: $paper-2;
+$mermaid-node-fg-color: $ink;
+
+/*-- scss:rules --*/
+
+@font-face { font-family: "IBM Plex Serif"; font-style: normal; font-weight: 500; src: url("../../../../../fonts/IBMPlexSerif-500.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Serif"; font-style: italic; font-weight: 500; src: url("../../../../../fonts/IBMPlexSerif-500i.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Serif"; font-style: normal; font-weight: 600; src: url("../../../../../fonts/IBMPlexSerif-600.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 400; src: url("../../../../../fonts/IBMPlexSans-400.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: italic; font-weight: 400; src: url("../../../../../fonts/IBMPlexSans-400i.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Sans"; font-style: normal; font-weight: 600; src: url("../../../../../fonts/IBMPlexSans-600.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; src: url("../../../../../fonts/IBMPlexMono-400.woff2") format("woff2"); }
+@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; src: url("../../../../../fonts/IBMPlexMono-500.woff2") format("woff2"); }
+
+.reveal {
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.reveal strong { font-weight: 600; }
+
+// Títulos: serif con una regla corta de acento debajo
+.reveal h2 {
+  margin-bottom: 0.55em;
+  &::after {
+    content: "";
+    display: block;
+    width: 1.6em;
+    height: 2px;
+    background: $accent;
+    margin-top: 0.28em;
+  }
+  &:empty { display: none; }
+}
+
+// Divisores de sección (nivel 1): título grande, centrado verticalmente
+.reveal .slide.level1 h1 {
+  font-weight: 500;
+  &::after {
+    content: "";
+    display: block;
+    width: 1.2em;
+    height: 2px;
+    background: $accent-2;
+    margin-top: 0.3em;
+  }
+}
+
+// Fondos oscuros: texto en papel, acento claro
+.reveal .has-dark-background {
+  color: $paper;
+  h1, h2, h3, p, li { color: $paper; }
+  h2::after { background: $accent-2; }
+  a { color: $accent-2; }
+  div.sourceCode, pre { border-color: rgba($paper, 0.18); }
+}
+
+// Listas: marcadores en acento
+.reveal ul, .reveal ol { margin-left: 1.1em; }
+.reveal li { margin-bottom: 0.22em; }
+.reveal li::marker { color: $accent; }
+.reveal ol li::marker { font-weight: 600; font-family: $presentation-heading-font; }
+
+// Tablas: líneas finas, sin fondos
+.reveal table {
+  border-collapse: collapse;
+  margin: 0.4em 0 0.8em;
+  th, td { padding: 0.28em 0.7em 0.28em 0.2em; vertical-align: top; }
+  th {
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid $ink;
+    border-top: none;
+  }
+  td { border-bottom: 1px solid $hairline; }
+  th[style*="text-align: right"], td[style*="text-align: right"] { text-align: right; }
+}
+
+// Código: fondo papel oscuro, borde fino, sin sombra
+.reveal div.sourceCode, .reveal pre {
+  border: 1px solid $hairline;
+  border-radius: 2px;
+  box-shadow: none;
+  background: $paper-2;
+}
+.reveal pre code { padding: 0.8em 1em; }
+.reveal code { font-weight: 500; }
+
+// Imágenes: borde fino, sin sombra
+.reveal .slide img {
+  border: 1px solid $hairline;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+// Columnas con un poco de aire
+.reveal .columns { gap: 1.2em; }
+
+// Portada
+#title-slide {
+  .title {
+    font-size: 2.2em;
+    font-weight: 600;
+    margin-bottom: 0.35em;
+    &::after {
+      content: "";
+      display: block;
+      width: 1.3em;
+      height: 2px;
+      background: $accent;
+      margin-top: 0.3em;
+    }
+  }
+  .subtitle {
+    font-family: $presentation-heading-font;
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.05em;
+    color: $ink-2;
+    margin-bottom: 1.4em;
+  }
+  .quarto-title-authors { justify-content: flex-start; }
+  .quarto-title-author-name { font-size: 0.7em; font-weight: 600; }
+  .date { font-size: 0.6em; color: $ink-2; margin-top: 0.4em; }
+}
+
+// Referencias al pie de la lámina
+.reveal .slide aside {
+  font-size: 0.5em;
+  color: $ink-2;
+  bottom: 0.6em;
+}
+
+// Pie, número de lámina y barra de progreso
+.reveal .footer { color: $ink-2; font-size: 0.42em; }
+.reveal .slide-number {
+  color: $ink-2;
+  font-family: $font-family-monospace;
+  font-size: 0.42em;
+  background: transparent;
+}
+.reveal .progress { color: $accent; height: 3px; }
+.reveal .slide-menu-button .fa-bars::before { color: $ink-2; }

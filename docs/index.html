@@ -6,11 +6,10 @@
 <script src="presentacion_files/libs/quarto-html/tippy.umd.min.js"></script>
 <link href="presentacion_files/libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="presentacion_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="presentacion_files/libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.8.26">
+<link href="presentacion_files/libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.37">
 
   <meta name="author" content="Guillermo Barrios · Instituto de Energías Renovables, UNAM">
-  <meta name="dcterms.date" content="2026-10-14">
   <title>Wearables, IoT y agentes de IA</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,6 +17,9 @@
   <link rel="stylesheet" href="presentacion_files/libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="presentacion_files/libs/revealjs/dist/reveal.css">
   <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -96,7 +98,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="presentacion_files/libs/revealjs/dist/theme/quarto-0fde88a82f0356838740f155f1088782.css">
+  <link rel="stylesheet" href="presentacion_files/libs/revealjs/dist/theme/quarto-9f5c31fc6ca6b8cf54475f30552fcf6b.css">
   <link href="presentacion_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="presentacion_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="presentacion_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -196,7 +198,7 @@
   <div class="reveal">
     <div class="slides">
 
-<section id="title-slide" class="quarto-title-block center">
+<section id="title-slide" data-background-color="#0f1226" data-background-gradient="radial-gradient(circle at 85% 15%, rgba(91,61,245,0.28) 0%, rgba(91,61,245,0) 50%)" class="quarto-title-block center">
   <h1 class="title">Wearables, IoT y agentes de IA</h1>
   <p class="subtitle">Medir, interpretar y actuar sobre el ambiente construido</p>
 
@@ -208,33 +210,16 @@ Guillermo Barrios · Instituto de Energías Renovables, UNAM
 </div>
 </div>
 
-  <p class="date">2026-10-14</p>
+  <p class="date">14 de octubre de 2026</p>
 </section>
-<section id="de-qué-va-esta-plática" class="slide level2 smaller">
-<h2>¿De qué va esta plática?</h2>
-<!--
-Plan de tiempos (20 min):
-  Intro ............... 2 min
-  Parte 1: Wearables .. 7 min  (incluye el smartwatch del IER, 2 láminas)
-  Parte 2: IoT ........ 3 min
-  Parte 3: LLM + IoT .. 6 min  (incluye demo en vivo)
-  Cierre .............. 2 min
--->
-<div class="columns">
-<div class="column" style="width:60%;">
-<ol type="1">
-<li><strong>Wearables</strong>: qué son, qué tipos hay y qué miden</li>
-<li><strong>IoT</strong>: el contexto donde viven esos datos</li>
-<li><strong>LLMs + IoT</strong>: lenguaje natural como interfaz para sensar y actuar
-<ul>
-<li>Demo en vivo: un LLM local controlando un ESP32</li>
-</ul></li>
-</ol>
-</div><div class="column" style="width:40%;">
-<!-- TODO: imagen/foto del wearable o del montaje de la demo -->
-</div></div>
+<section id="section" class="slide level2 center">
+<h2></h2>
+<div style="text-align: center">
+<p><img data-src="img/qr-repo.svg" width="540"></p>
+<p><a href="https://altamarmx.github.io/WearablesIoTAgentesIA/"><code>altamarmx.github.io/WearablesIoTAgentesIA</code></a></p>
+</div>
 <aside class="notes">
-<p>2 min. Idea central: la convergencia de estas tres tecnologías abre nuevas formas de medir, interpretar y actuar sobre el ambiente construido.</p>
+<p>30 s. Dejar la lámina el tiempo suficiente para escanear. El QR abre la presentación publicada en GitHub Pages.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -246,11 +231,6 @@ Plan de tiempos (20 min):
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section>
-<section id="parte-1-wearables" class="title-slide slide level1 center" data-background-color="#1a3a5c">
-<h1>Parte 1 · Wearables</h1>
-
 </section>
 <section id="qué-es-un-wearable" class="slide level2">
 <h2>¿Qué es un wearable?</h2>
@@ -274,51 +254,35 @@ Plan de tiempos (20 min):
           display:block!important;
       }</style></aside>
 </section>
-<section id="tipos-de-wearables-por-dónde-se-portan" class="slide level2 smaller">
-<h2>Tipos de wearables (por dónde se portan)</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Tipo</th>
-<th>Ejemplos</th>
-<th>Qué miden típicamente</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Muñeca</strong></td>
-<td>Smartwatch, bandas de actividad</td>
-<td>FC, actividad, SpO₂, temperatura de piel</td>
-</tr>
-<tr class="even">
-<td><strong>Anillos</strong></td>
-<td>Oura, Galaxy Ring</td>
-<td>FC, HRV, sueño, temperatura</td>
-</tr>
-<tr class="odd">
-<td><strong>Parches / piel</strong></td>
-<td>Parches de glucosa, electrónica epidérmica</td>
-<td>Glucosa, sudor, temperatura local</td>
-</tr>
-<tr class="even">
-<td><strong>Textiles inteligentes</strong></td>
-<td>Camisetas, plantillas con sensores</td>
-<td>ECG, respiración, presión plantar</td>
-</tr>
-<tr class="odd">
-<td><strong>Cabeza / oído</strong></td>
-<td>Audífonos (<em>hearables</em>), diademas EEG, lentes XR</td>
-<td>Audio, EEG, movimiento ocular</td>
-</tr>
-</tbody>
-</table>
+<section id="ejemplo-sensor-continuo-de-glucosa" class="slide level2 smaller">
+<h2>Ejemplo: sensor continuo de glucosa</h2>
+<div style="font-size: 0.9em">
+<div class="columns">
+<div class="column" style="width:28%;">
+<p><img data-src="img/sensor-glucosa.jpg"></p>
+<p>FreeStyle Libre (Abbott): parche en el brazo, lectura en el teléfono</p>
+</div><div class="column" style="width:36%;">
+<p><strong>Datos</strong></p>
+<ul>
+<li>Mide <strong>líquido intersticial</strong>, no sangre: filamento de 5 mm con glucosa oxidasa → corriente</li>
+<li><strong>1 lectura por minuto</strong>, sin calibración</li>
+<li>MARD 9.2 % (Libre 2), 7.9 % (Libre 3)</li>
+<li><strong>NFC</strong>: al acercar el teléfono baja 8 h de historial (1 dato / 15 min)</li>
+<li><strong>Bluetooth LE</strong>: alarmas; Libre 3 transmite cada minuto</li>
+</ul>
+</div><div class="column" style="width:36%;">
+<p><strong>Energía</strong></p>
+<ul>
+<li><strong>Una pila de reloj</strong> (óxido de plata SR626, 1.5 V) para sensor, MCU y radio: <strong>14 días</strong></li>
+<li>No se recarga; el sensor se desecha</li>
+<li>La lectura NFC es pasiva: la alimenta el teléfono</li>
+<li>35 mm × 5 mm, 5 g (Libre 2) → 21 mm × 2.9 mm, 1 g (Libre 3)</li>
+<li>IP27; opera de 10 a 45 °C</li>
+</ul>
+</div></div>
+</div>
 <aside class="notes">
-<p>2 min. No leer la tabla: destacar 2–3 ejemplos y la tendencia a formatos cada vez menos invasivos.</p>
+<p>1–2 min. Es el patrón sensar → procesar → comunicar en un objeto de 5 g: sensor electroquímico + MCU con NFC/BLE + pila de reloj = 14 días de datos por minuto. Lleva además un termistor de piel para corregir la lectura. La restricción de energía define el diseño; lo retomamos en la parte 3. Fuentes: Abbott, ADA Consumer Guide, teardown de G. Lui (2022).</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -331,19 +295,20 @@ Plan de tiempos (20 min):
           display:block!important;
       }</style></aside>
 </section>
-<section id="tipos-de-wearables-por-para-qué-sirven" class="slide level2">
-<h2>Tipos de wearables (por para qué sirven)</h2>
+<section id="tus-datos-no-son-tuyos" class="slide level2 smaller">
+<h2>Tus datos no son tuyos</h2>
+<div style="font-size: 0.92em">
 <ul>
-<li><strong>Bienestar y deporte</strong>: pasos, sueño, entrenamiento</li>
-<li><strong>Salud clínica</strong>: monitoreo de glucosa, ECG, detección de caídas</li>
-<li><strong>Seguridad laboral</strong>: fatiga, exposición a calor, gases</li>
-<li><strong>Investigación</strong>: instrumentar a las personas, no solo a los edificios
-<ul>
-<li>… y aquí entra el <strong>confort térmico</strong></li>
-</ul></li>
+<li><strong>Lo que mide no es lo que te muestra</strong>: PPG y acelerómetro a decenas de Hz; tú recibes “pasos”, “sueño” y un <em>readiness score</em> sin fórmula publicada ni validación clínica</li>
+<li><strong>El negocio es la suscripción</strong>: Oura ~6 USD/mes por ver tus propias métricas; Fitbit Premium ~10 USD/mes; Whoop solo vende suscripción (desde ~200 USD/año)</li>
+<li><strong>Las APIs entregan datos digeridos, no la señal</strong>; sin señal cruda nadie puede auditar sesgos (tono de piel, tatuajes, movimiento)</li>
+<li><strong>Si la empresa cierra, el dispositivo muere</strong>: Amazon Halo (2023) borró los datos; Pebble volvió porque Google liberó su código en 2025</li>
+<li><strong>En México son datos personales sensibles</strong> (LFPDPPP): tienes derechos ARCO, pero el “acceso” es un CSV de métricas</li>
+<li><strong>Para investigar necesitamos</strong> señal cruda, muestreo conocido, sensores que elegimos y firmware que controlamos: relojes abiertos (Bangle.js, PineTime)… o <strong>construir el propio</strong></li>
 </ul>
+</div>
 <aside class="notes">
-<p>1 min. Puente hacia la siguiente lámina: en investigación los wearables comerciales no siempre dan acceso a los datos crudos → desarrollamos el propio.</p>
+<p>2.5 min. El punto: el hardware es el gancho; el producto es el servicio sobre tus datos. Precios de 2026 (Fitbit 9.99 USD/mes, Oura 5.99 USD/mes, Whoop One 199 USD/año). Solo el ECG del Apple Watch pasó por la FDA (2018); “estrés” o “body battery” no son medidas clínicas. Fitbit da datos por minuto solo a apps personales y exige solicitud para el resto; Garmin reserva su API a empresas. Halo: cierre anunciado en abril de 2023, app apagada el 1 de agosto, datos borrados. PebbleOS liberado por Google el 27 de enero de 2025. Los estudios sobre tono de piel y PPG no coinciden entre sí; el punto es que sin señal cruda no se puede verificar. Aseguradoras y programas de bienestar laboral premian por “compartir” datos; HIPAA no cubre estas apps. Otras salidas: Apple Salud exporta XML, Garmin .FIT, Polar Verity Sense da señal cruda. Cierra con “construir el propio” como puente al smartwatch del IER.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -359,24 +324,19 @@ Plan de tiempos (20 min):
 <section id="caso-ier-smartwatch-para-confort-térmico" class="slide level2 smaller">
 <h2>Caso IER: smartwatch para confort térmico</h2>
 <div class="columns">
-<div class="column" style="width:55%;">
+<div class="column" style="width:52%;">
 <ul>
-<li><strong>Motivación</strong>: los modelos adaptativos de confort requieren encuestas <strong>+</strong> mediciones fisiológicas, y no existía un ecosistema abierto que integrara ambas en un solo wearable</li>
-<li>Hardware abierto (GPLv3), <strong>~49 USD</strong>, sin PCB a la medida:
-<ul>
-<li>XIAO <strong>ESP32C3</strong> (WiFi + BLE)</li>
-<li><strong>GY-906</strong> (MLX90614): temperatura de piel por infrarrojo, ±0.5 °C</li>
-<li><strong>MAX30102</strong>: frecuencia cardiaca (fotopletismografía)</li>
-<li>Pantalla táctil redonda XIAO (240×240) + motor vibrador</li>
-<li>Carcasa impresa en 3D, batería LiPo (~8 h)</li>
-</ul></li>
+<li><strong>Motivación</strong>: los modelos adaptativos de confort necesitan encuestas <strong>y</strong> mediciones fisiológicas a la vez, y no había un wearable abierto que integrara ambas</li>
+<li><strong>Hardware abierto</strong> (GPLv3), <strong>~49 USD</strong>, módulos comerciales, sin PCB a la medida</li>
+<li>XIAO <strong>ESP32C3</strong> (Wi-Fi + BLE) · <strong>GY-906</strong> (MLX90614): temperatura de piel por infrarrojo, ±0.5 °C · <strong>MAX30102</strong>: frecuencia cardiaca por PPG</li>
+<li>Pantalla táctil redonda de 240×240, motor vibrador, LiPo de 650 mAh (~8 h), carcasa impresa en 3D</li>
 </ul>
-</div><div class="column" style="width:45%;">
-<!-- TODO: foto del smartwatch (Fig. 1 del artículo) -->
+</div><div class="column" style="width:48%;">
+<p><img data-src="img/smartwatch-ier-componentes.png" style="width:100.0%"></p>
 </div></div>
 
 <aside class="notes">
-<p>1.5 min. Destacar: componentes comerciales de bajo costo, diseño reproducible, archivos en Zenodo (doi:10.5281/zenodo.14835096).</p>
+<p>1.5 min. Destacar: componentes comerciales de bajo costo, diseño reproducible, archivos en Zenodo (doi:10.5281/zenodo.14835096). El diagrama es la figura de componentes del artículo: sensores por I2C, pantalla, vibrador y antena Wi-Fi alrededor del XIAO ESP32C3.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -391,131 +351,7 @@ Plan de tiempos (20 min):
 <aside><div>
 <p>Landa, Barrios, Huelsz (2025). <em>HardwareX</em> 22, e00633. <a href="https://doi.org/10.1016/j.ohx.2025.e00633">doi:10.1016/j.ohx.2025.e00633</a></p>
 </div></aside></section>
-<section id="qué-recolecta-el-smartwatch" class="slide level2 smaller">
-<h2>¿Qué recolecta el smartwatch?</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
-<p><strong>Encuesta simplificada de confort (cada hora, con alerta vibratoria):</strong></p>
-<ul>
-<li>Aislamiento de ropa (<em>clo</em>)</li>
-<li>Actividad metabólica (<em>met</em>)</li>
-<li>Ubicación</li>
-<li>Sensación térmica y aceptación térmica</li>
-</ul>
-<p><strong>Mediciones fisiológicas:</strong></p>
-<ul>
-<li>Temperatura de piel en la muñeca</li>
-<li>Frecuencia cardiaca</li>
-</ul>
-</div><div class="column" style="width:45%;">
-<p><strong>Todo se publica en tiempo real</strong> a una plataforma IoT (<strong>ThingsBoard</strong>, open source)</p>
-<p>→ base de datos robusta para <strong>modelos adaptativos de confort térmico</strong></p>
-<!-- TODO: captura del dashboard de ThingsBoard -->
-</div></div>
-<aside class="notes">
-<p>1.5 min. La interfaz de encuestas está hecha con LVGL en la pantalla táctil. Sensores calibrados contra instrumentos de referencia (termómetro AET-R1B1, oxímetro Yonker YK-81C). Este dispositivo ya es, en sí mismo, un nodo IoT: puente perfecto a la parte 2.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- NUEVO · prioridad ALTA para audiencia de ingeniería -->
-</section>
-<section id="hardware-abierto-construyan-el-suyo" class="slide level2 smaller">
-<h2>Hardware abierto: construyan el suyo</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Plataforma</th>
-<th>Chip / radio</th>
-<th>Se programa con</th>
-<th>Nota</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>Bangle.js 2</strong></td>
-<td>nRF52, BLE</td>
-<td>JavaScript (Espruino)</td>
-<td>~4 semanas de batería; FC validada contra referencia</td>
-</tr>
-<tr class="even">
-<td><strong>PineTime</strong></td>
-<td>nRF52832, BLE</td>
-<td>C++ (InfiniTime)</td>
-<td>~30 USD; ideal para aprender BLE/GATT</td>
-</tr>
-<tr class="odd">
-<td><strong>LilyGO T-Watch S3</strong></td>
-<td>ESP32-S3, WiFi+BLE</td>
-<td>Arduino / MicroPython</td>
-<td>WiFi directo a la plataforma; micrófono</td>
-</tr>
-<tr class="even">
-<td><strong>Smartwatch IER</strong></td>
-<td>XIAO ESP32C3</td>
-<td>Arduino + LVGL</td>
-<td>~49 USD, GPLv3, archivos en Zenodo</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Construir un wearable funcional hoy es un <strong>proyecto de licenciatura</strong>, no de corporación</li>
-<li>Ojo: validar siempre contra instrumento de referencia (el Bangle.js 2 mide bien FC pero <em>subregistra pasos</em> vs.&nbsp;Fitbit, <em>Sensors</em> 2025)</li>
-</ul>
-<aside class="notes">
-<p>1 min. Mensaje para estudiantes: la barrera de entrada es bajísima. La fila del smartwatch IER conecta con las láminas anteriores.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="qué-aprendimos-de-los-wearables" class="slide level2">
-<h2>¿Qué aprendimos de los wearables?</h2>
-<ul>
-<li>Medir es la parte “fácil”: el reto es <strong>dar sentido</strong> a los datos</li>
-<li>Los datos personales + los datos del edificio cuentan una historia completa</li>
-<li>Falta un eslabón: ¿cómo <strong>interactuamos</strong> con todos estos dispositivos?</li>
-</ul>
-<aside class="notes">
-<p>1 min. Esta lámina es el puente: los wearables generan datos, el IoT los conecta, y la IA los interpreta.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section>
-<section id="parte-2-iot-en-breve" class="title-slide slide level1 center" data-background-color="#1a3a5c">
-<h1>Parte 2 · IoT, en breve</h1>
-
-</section>
-<section id="internet-de-las-cosas-en-una-lámina" class="slide level2">
+<section id="internet-de-las-cosas-en-una-lámina" class="slide level2 smaller">
 <h2>Internet de las Cosas en una lámina</h2>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
@@ -533,40 +369,23 @@ Plan de tiempos (20 min):
 </div>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:48%;">
 <ul>
 <li>Objetos cotidianos con sensores, cómputo y red</li>
-<li>En el ambiente construido: monitoreo de temperatura, CO₂, ocupación, energía</li>
-<li><strong>El smartwatch ya recorre este camino completo</strong>: ESP32C3 → WiFi → ThingsBoard</li>
+<li>En el ambiente construido: temperatura, CO₂, ocupación, energía</li>
+<li><strong>El smartwatch ya recorre este camino completo</strong>: XIAO ESP32C3 → WiFi → ThingsBoard (open source)</li>
 </ul>
-<aside class="notes">
-<p>1.5 min. Presentar el flujo clásico: sensar → transmitir → almacenar → actuar.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="el-esp32-el-caballo-de-batalla" class="slide level2 smaller">
-<h2>El ESP32: el caballo de batalla</h2>
-<div class="columns">
-<div class="column" style="width:55%;">
+</div><div class="column" style="width:52%;">
+<p><strong>Lo que publica el smartwatch, en tiempo real</strong></p>
 <ul>
-<li>Microcontrolador con <strong>WiFi y Bluetooth</strong> integrados</li>
-<li>Cuesta ~100 pesos</li>
-<li>Se programa con Arduino / MicroPython</li>
-<li>Lee sensores y acciona salidas (relés, LEDs, motores)</li>
+<li>Encuesta de confort cada hora, con alerta vibratoria: ropa (<em>clo</em>), actividad (<em>met</em>), ubicación, sensación y aceptación térmica</li>
+<li>Fisiología: temperatura de piel en la muñeca y frecuencia cardiaca</li>
+<li>→ base de datos robusta para <strong>modelos adaptativos de confort térmico</strong></li>
 </ul>
-</div><div class="column" style="width:45%;">
-<!-- TODO: foto del ESP32 / montaje -->
 </div></div>
 <aside class="notes">
-<p>1 min. Es la pieza que usaremos en la demo.</p>
+<p>2 min. Flujo clásico: sensar → transmitir → almacenar → actuar. La interfaz de encuestas está hecha con LVGL en la pantalla táctil; sensores calibrados contra instrumentos de referencia (termómetro AET-R1B1, oxímetro Yonker YK-81C). El smartwatch ya es, en sí mismo, un nodo IoT.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -578,41 +397,15 @@ Plan de tiempos (20 min):
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section>
-<section id="lo-que-el-iot-clásico-no-resuelve" class="slide level2">
-<h2>Lo que el IoT clásico no resuelve</h2>
-<ul>
-<li>Cada plataforma tiene su <em>app</em>, su <em>dashboard</em>, su API</li>
-<li>Interactuar requiere <strong>programar</strong> o usar interfaces rígidas</li>
-<li>Dependencia de la <strong>nube</strong>: latencia, privacidad, costo, conectividad</li>
-</ul>
-<p>→ ¿Y si pudiéramos simplemente <strong>hablarle</strong> a nuestros dispositivos?</p>
-<aside class="notes">
-<p>0.5 min. Motivación directa para la parte 3.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section></section>
-<section>
-<section id="parte-3-ia-iot-del-sensor-al-agente" class="title-slide slide level1 center" data-background-color="#1a3a5c">
-<h1>Parte 3 · IA + IoT: del sensor al agente</h1>
-<!-- NUEVO · prioridad ALTA: el mensaje central para ingeniería electrónica -->
 </section>
 <section id="la-ia-no-es-un-lugar-es-una-cadena" class="slide level2 smaller">
 <h2>La IA no es un lugar: es una cadena</h2>
+<div style="font-size: 0.85em">
 <table class="caption-top">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 24%">
+<col style="width: 12%">
+<col style="width: 64%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -625,7 +418,7 @@ Plan de tiempos (20 min):
 <tr class="odd">
 <td><strong>En el sensor</strong></td>
 <td>µA</td>
-<td>IMU ST LSM6DSOX: árbol de decisión integrado; clasificar actividad agrega ~13 µA</td>
+<td>IMU ST LSM6DSOX: árbol de decisión integrado; clasificar actividad cuesta ~13 µA</td>
 </tr>
 <tr class="even">
 <td><strong>En el MCU</strong></td>
@@ -635,12 +428,12 @@ Plan de tiempos (20 min):
 <tr class="odd">
 <td><strong>Con microNPU</strong></td>
 <td>mJ → µJ</td>
-<td>Arm Ethos-U55: MobileNetV2 de 624→8 ms y 228→3 mJ; MAX78000: 251 µJ por palabra clave</td>
+<td>Arm Ethos-U55: MobileNetV2 de 624 a 8 ms y de 228 a 3 mJ; MAX78000: 251 µJ por palabra clave</td>
 </tr>
 <tr class="even">
 <td><strong>En el SoC del reloj</strong></td>
 <td>—</td>
-<td>Apple S9: Neural Engine → Siri procesada en el dispositivo</td>
+<td>Apple S9: Neural Engine, Siri procesada en el dispositivo</td>
 </tr>
 <tr class="odd">
 <td><strong>En el gateway / laptop</strong></td>
@@ -650,6 +443,7 @@ Plan de tiempos (20 min):
 </tbody>
 </table>
 <p><strong>Cada eslabón hace lo mínimo necesario</strong> y pasa al siguiente solo lo que importa.</p>
+</div>
 <aside class="notes">
 <p>2 min. Esta es la lámina conceptual clave para esta audiencia. Aclarar que las cifras de Ethos-U55/MAX78000 son benchmarks de fabricante en modelos favorables; la tendencia la confirman estudios independientes.</p>
 <style type="text/css">
@@ -663,30 +457,8 @@ Plan de tiempos (20 min):
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- NUEVO · prioridad ALTA -->
 </section>
-<section id="reglas-de-diseño-energía-y-memoria" class="slide level2">
-<h2>Reglas de diseño: energía y memoria</h2>
-<ul>
-<li>La energía por inferencia ≈ número de operaciones: <strong>“correr rápido y dormir”</strong></li>
-<li>El límite real suele ser la <strong>SRAM</strong> (256–512 kB), no el cómputo → cuantizar a INT8, podar, preferir modelos pequeños (1D-CNN, árboles)</li>
-<li><strong>La radio cuesta más que la inferencia local</strong> → transmitir <em>eventos y clases</em>, no señales crudas</li>
-</ul>
-<aside class="notes">
-<p>1 min. Esto justifica decisiones del smartwatch: procesar en el dispositivo y publicar datos ya digeridos a ThingsBoard.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-</section>
-<section id="qué-aporta-un-llm-al-iot" class="slide level2">
+<section id="qué-aporta-un-llm-al-iot" class="slide level2 smaller">
 <h2>¿Qué aporta un LLM al IoT?</h2>
 <ul>
 <li><strong>Lenguaje natural como interfaz</strong>: “¿cuál es la temperatura?, prende el ventilador”</li>
@@ -697,7 +469,7 @@ Plan de tiempos (20 min):
 <ol type="1">
 <li>LLM en la <strong>nube</strong> (asistentes comerciales)</li>
 <li>LLM <strong>local</strong> en una computadora junto al dispositivo ← <em>nuestra prueba de concepto</em></li>
-<li>Modelos pequeños <strong>en el propio microcontrolador</strong> (TinyML, aún limitado)</li>
+<li>Modelos pequeños <strong>dentro del propio microcontrolador</strong> (al final: 9 y 29 M de parámetros en un ESP32-S3)</li>
 </ol>
 <aside class="notes">
 <p>1.5 min. Distinguir claramente: el LLM no corre en el ESP32; corre al lado, y el ESP32 le presta sus “manos y sentidos”.</p>
@@ -716,68 +488,23 @@ Plan de tiempos (20 min):
 <section id="tool-calling-las-manos-del-modelo" class="slide level2 smaller">
 <h2>Tool calling: las manos del modelo</h2>
 <ul>
-<li>El modelo recibe una <strong>lista de funciones disponibles</strong> y decide cuándo llamarlas</li>
+<li>El modelo recibe una <strong>lista de funciones</strong> y decide cuándo llamarlas y con qué argumentos</li>
+<li>En <code>led.py</code> las herramientas son funciones de Python: el cliente de Ollama convierte el <em>docstring</em> y los <em>type hints</em> en el esquema que ve el modelo</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"leer_temperatura"</span><span class="fu">,</span></span>
-<span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"Lee el sensor de temperatura del ESP32"</span><span class="fu">,</span></span>
-<span id="cb1-4"><a href="" aria-hidden="true" tabindex="-1"></a>  <span class="dt">"parameters"</span><span class="fu">:</span> <span class="fu">{}</span></span>
-<span id="cb1-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> color_led(r: <span class="bu">int</span>, g: <span class="bu">int</span>, b: <span class="bu">int</span>) <span class="op">-&gt;</span> <span class="bu">str</span>:</span>
+<span id="cb1-2"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Enciende el LED con un color RGB.</span></span>
+<span id="cb1-3"><a href="" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb1-5"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">        r: rojo, 0-255</span></span>
+<span id="cb1-6"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">        g: verde, 0-255</span></span>
+<span id="cb1-7"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">        b: azul, 0-255</span></span>
+<span id="cb1-8"><a href="" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb1-9"><a href="" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> board.send(<span class="ss">f"RGB </span><span class="sc">{</span>r<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>g<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
-<li>Usuario: <em>“¿hace calor en el laboratorio?”</em></li>
-<li>LLM → llama <code>leer_temperatura()</code> → ESP32 responde <code>29.4</code> → LLM: <em>“Sí, hay 29.4 °C…”</em></li>
+<li>Usuario: <em>“pon una luz cálida”</em> → LLM llama <code>color_led(255, 140, 40)</code> → placa: <code>OK pin=48 on=1 rgb=255,140,40</code> → LLM: <em>“Puse el LED en un tono cálido”</em></li>
 </ul>
 <aside class="notes">
-<p>1.5 min. Este es el concepto clave de la plática: el LLM decide, el microcontrolador ejecuta.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- NUEVO · prioridad MEDIA: refuerza por qué tool calling es EL patrón correcto -->
-</section>
-<section id="los-llms-no-saben-leer-series-de-tiempo" class="slide level2">
-<h2>Los LLMs no saben leer series de tiempo</h2>
-<ul>
-<li>Darle números crudos a un LLM produce <strong>errores narrados con confianza</strong></li>
-<li>Lo que sí funciona (estado del arte 2025–2026):
-<ol type="1">
-<li>El agente <strong>genera código</strong> para analizar los datos (PHIA, <em>Nature Communications</em> 2026)</li>
-<li><strong>Modelos fundacionales de sensores</strong> convierten la señal en contexto (PH-LLM, <em>Nature Medicine</em> 2025; LSM de Google: 40 millones de horas de datos de wearables)</li>
-</ol></li>
-<li>Moraleja: <strong>el LLM decide y orquesta; las herramientas miden y calculan</strong> → el mismo principio de nuestra demo</li>
-</ul>
-<aside class="notes">
-<p>1 min. Conecta la demo casera con la frontera de investigación: es el mismo patrón a distinta escala.</p>
-<style type="text/css">
-        span.MJX_Assistive_MathML {
-          position:absolute!important;
-          clip: rect(1px, 1px, 1px, 1px);
-          padding: 1px 0 0 0!important;
-          border: 0!important;
-          height: 1px!important;
-          width: 1px!important;
-          overflow: hidden!important;
-          display:block!important;
-      }</style></aside>
-<!-- NUEVO · prioridad MEDIA-ALTA: estándar emergente, directamente aplicable -->
-</section>
-<section id="mcp-hacia-una-interfaz-universal-agente-iot" class="slide level2 smaller">
-<h2>MCP: hacia una interfaz universal agente ↔︎ IoT</h2>
-<ul>
-<li><strong>Model Context Protocol</strong>: estándar abierto para exponer herramientas a un LLM (el “USB” de los agentes)</li>
-<li><strong>ThingsBoard ya tiene servidor MCP oficial</strong>: consultar dispositivos, telemetría y alarmas en lenguaje natural</li>
-<li>El <strong>ESP32 puede ser servidor MCP</strong> (JSON-RPC sobre HTTP, o MCP sobre MQTT)</li>
-<li>Nuestra demo serial implementa el mismo patrón en versión mínima; migrarla a MCP es el paso natural</li>
-</ul>
-<aside class="notes">
-<p>1 min. Posible gancho: “el smartwatch publica a ThingsBoard, y ThingsBoard ya habla con agentes” — el ciclo completo wearable → IoT → agente existe hoy con piezas open source.</p>
+<p>1.5 min. Concepto clave: el LLM decide, el microcontrolador ejecuta. Son cinco herramientas: encender_led, apagar_led, color_led, parpadear_led y estado_led. Agregar una = una función con docstring en led.py + un comando en el firmware. El modelo traduce “cálido” a RGB por sí mismo; nadie programó esa tabla.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -790,20 +517,18 @@ Plan de tiempos (20 min):
           display:block!important;
       }</style></aside>
 </section>
-<section id="arquitectura-de-la-prueba-de-concepto" class="slide level2">
-<h2>Arquitectura de la prueba de concepto</h2>
+<section id="la-prueba-de-concepto-esp32llm" class="slide level2 smaller">
+<h2>La prueba de concepto: <code>esp32LLM</code></h2>
 <div class="cell" data-reveal="true" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class=""><p></p>
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
-  U[Usuario&lt;br/&gt;lenguaje natural] --&gt; L[LLM local&lt;br/&gt;en la laptop]
-  L -- "tool calling" --&gt; P[Puente en Python]
-  P -- "serial USB" --&gt; E[ESP32]
-  E --&gt; S[Sensores]
-  E --&gt; R[Salidas: LED, relé]
-  E -- "respuesta" --&gt; P --&gt; L --&gt; U
+  U[Usuario&lt;br/&gt;texto en español] --&gt; P[led.py en la Mac&lt;br/&gt;5 herramientas]
+  P &lt;-- "chat + tools&lt;br/&gt;tool_call" --&gt; O[Ollama&lt;br/&gt;LLM local]
+  P &lt;-- "USB serial&lt;br/&gt;comando → OK / ERR" --&gt; F[ESP32-S3&lt;br/&gt;led_control.ino]
+  F --&gt; L[LED RGB&lt;br/&gt;GPIO 48]
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -811,11 +536,12 @@ Plan de tiempos (20 min):
 </div>
 </div>
 <ul>
-<li>Todo corre <strong>sin nube</strong>: modelo local + comunicación serial</li>
-<li>El ESP32 expone sus funciones; el modelo las invoca según la conversación</li>
+<li><strong>Sin nube</strong>: el modelo corre en la laptop con Ollama; la placa se conecta por USB o por Wi-Fi (<code>led-wifi.py</code>: la placa crea su propia red y escucha en TCP 2323)</li>
+<li>El firmware es un <strong>protocolo de texto de seis comandos</strong>: <code>ON</code>, <code>OFF</code>, <code>RGB r g b</code>, <code>BLINK n ms</code>, <code>PIN p</code>, <code>STATUS</code>; cada uno contesta <code>OK …</code> o <code>ERR …</code></li>
+<li>La placa <strong>no sabe nada de IA</strong>: solo obedece</li>
 </ul>
 <aside class="notes">
-<p>1 min. Explicar el recorrido de un mensaje de ida y vuelta antes de la demo.</p>
+<p>1 min. Explicar el recorrido antes de la demo. Placa ESP32-S3 N16R8 (16 MB de flash, 8 MB de PSRAM); el LED es el WS2812 integrado en la DevKit. El protocolo se puede probar sin modelo desde un monitor serial. La variante Wi-Fi conviene en un auditorio: eduroam aísla equipos, la red propia esp32-led no.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -828,15 +554,12 @@ Plan de tiempos (20 min):
           display:block!important;
       }</style></aside>
 </section>
-<section id="demo-en-vivo" class="slide level2" data-background-color="#0d2137">
+<section id="demo-en-vivo" class="slide level2" data-background-color="#0f1226" data-background-gradient="radial-gradient(circle at 88% 10%, rgba(91,61,245,0.70) 0%, rgba(91,61,245,0) 42%), radial-gradient(circle at 6% 100%, rgba(201,242,107,0.28) 0%, rgba(201,242,107,0) 36%)">
 <h2>Demo en vivo</h2>
-<p>🔴 <em>“Enciende el LED y dime la temperatura”</em></p>
-<!-- TODO:
-  - checklist de la demo: puerto serial, modelo cargado, script corriendo
-  - plan B: video grabado de la demo por si algo falla
--->
+<p>🔴 <em>“Está muy oscuro, pon una luz cálida y parpadea dos veces”</em></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run led-wifi.py       <span class="co"># la Mac en la red esp32-led, sin cable</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <aside class="notes">
-<p>2 min. Tener el video de respaldo listo. Mostrar: (1) lectura de sensor, (2) accionar una salida, (3) una pregunta que combine ambas.</p>
+<p>2 min. Secuencia: (1) “¿cómo está el LED?” → estado_led; (2) “ponlo en morado” → color_led; (3) “parpadea tres veces y apágalo” → encadena dos herramientas. Checklist: firmware led_wifi ya flasheado; la placa solo necesita alimentación USB; la Mac conectada a la red esp32-led (clave esp32led); Ollama corriendo con un modelo con tools. Plan B: video grabado de la demo.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -848,18 +571,58 @@ Plan de tiempos (20 min):
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-<!-- NUEVO · prioridad MEDIA: dato curioso con buen efecto en audiencia técnica -->
 </section>
-<section id="qué-tan-pequeño-puede-ser-un-llm" class="slide level2">
+<section id="qué-tan-pequeño-puede-ser-un-llm" class="slide level2 smaller">
 <h2>¿Qué tan pequeño puede ser un LLM?</h2>
+<div style="font-size: 0.85em">
 <ul>
-<li><strong>Laptop / PC</strong>: modelos de 7–14B conversan con fluidez (nuestra demo)</li>
-<li><strong>Raspberry Pi 5</strong>: TinyLlama 1.1B ≈ 14 tokens/s — suficiente para un agente simple</li>
-<li><strong>ESP32-S3</strong>: un modelo de 260K parámetros corre <em>dentro del chip</em> a ~22 tokens/s… pero solo genera cuentos infantiles</li>
-<li>El agente útil vive hoy en el gateway; el microcontrolador presta <strong>sensores y actuadores</strong></li>
+<li><strong>Laptop</strong>: modelos de 4–27B con <em>tools</em> conversan y actúan (nuestra demo)</li>
+<li><strong>Raspberry Pi 5</strong>: TinyLlama 1.1B ≈ 14 tokens/s, suficiente para un agente simple</li>
+<li><strong>Dentro del ESP32-S3</strong>, misma placa, otro firmware (<code>barista.py</code>, <code>stories.py</code>):</li>
 </ul>
+<table class="caption-top">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: right;">barista</th>
+<th style="text-align: right;">tinystories</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>parámetros</td>
+<td style="text-align: right;">8.9 M</td>
+<td style="text-align: right;">28.9 M</td>
+</tr>
+<tr class="even">
+<td>en flash (int4)</td>
+<td style="text-align: right;">4.6 MB</td>
+<td style="text-align: right;">14.9 MB</td>
+</tr>
+<tr class="odd">
+<td>hace</td>
+<td style="text-align: right;">responde preguntas sobre espresso</td>
+<td style="text-align: right;">escribe un cuento al arrancar</td>
+</tr>
+<tr class="even">
+<td>velocidad</td>
+<td style="text-align: right;">~14 piezas/s</td>
+<td style="text-align: right;">~5.5 tok/s</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Caben porque el 81 % de los parámetros son tablas que se quedan en flash y se leen una fila por token (<em>Per-Layer Embeddings</em>, la idea de Gemma 3n); solo 1.6 M van a PSRAM</li>
+<li>Pero no siguen instrucciones ni llaman herramientas: el <strong>agente útil vive en la laptop</strong>; el microcontrolador presta <strong>sensores y actuadores</strong></li>
+</ul>
+</div>
 <aside class="notes">
-<p>1 min. Cifras de benchmarks comunitarios (llama.cpp/Ollama), cambian con cada versión. El punto no es el número exacto sino los órdenes de magnitud.</p>
+<p>1 min. Modelos y runtime de slvDev/esp32-ai (MIT), incluidos como submódulo. Barista: vocabulario de 854 piezas, no puede inventar números ni salirse del tema. Stories: 5.5 tok/s medidos sin OLED (9.9 publicados). La placa guarda un firmware a la vez; cambiar de programa tarda de 4 s a ~2 min según si hay que reescribir el modelo.</p>
 <style type="text/css">
         span.MJX_Assistive_MathML {
           position:absolute!important;
@@ -872,7 +635,7 @@ Plan de tiempos (20 min):
           display:block!important;
       }</style></aside>
 </section>
-<section id="consideraciones-y-límites" class="slide level2">
+<section id="consideraciones-y-límites" class="slide level2 smaller">
 <h2>Consideraciones y límites</h2>
 <ul>
 <li><strong>Latencia</strong>: un LLM local responde en segundos, no milisegundos</li>
@@ -894,11 +657,6 @@ Plan de tiempos (20 min):
           overflow: hidden!important;
           display:block!important;
       }</style></aside>
-</section></section>
-<section>
-<section id="cierre" class="title-slide slide level1 center" data-background-color="#1a3a5c">
-<h1>Cierre</h1>
-<!-- NUEVO · prioridad ALTA para universidad tecnológica: "ustedes pueden entrar aquí" -->
 </section>
 <section id="la-oportunidad-para-méxico" class="slide level2 smaller">
 <h2>La oportunidad para México</h2>
@@ -938,15 +696,7 @@ Plan de tiempos (20 min):
 <li>Los <strong>LLMs</strong> agregan la pieza que faltaba: interpretar y actuar en lenguaje natural</li>
 <li>Todo esto es posible hoy con <strong>hardware de bajo costo y modelos abiertos</strong></li>
 </ul>
-</section>
-<section id="gracias" class="slide level2 center">
-<h2>¡Gracias!</h2>
-<p><strong>gbv@ier.unam.mx</strong></p>
-<ul>
-<li>Artículo: <a href="https://doi.org/10.1016/j.ohx.2025.e00633">doi:10.1016/j.ohx.2025.e00633</a> (open access)</li>
-<li>Archivos del smartwatch: <a href="https://doi.org/10.5281/zenodo.14835096">doi:10.5281/zenodo.14835096</a></li>
-</ul>
-<!-- TODO: QR al repositorio del código de la demo LLM+ESP32 -->
+
 <aside class="notes">
 <p>Preguntas. Posibles temas: qué modelo local se usó, tamaño del modelo, hardware mínimo, cómo escalar a más dispositivos.</p>
 <style type="text/css">
@@ -961,7 +711,9 @@ Plan de tiempos (20 min):
           display:block!important;
       }</style></aside>
 
-</section></section>
+<aside><div>
+<p>gbv@ier.unam.mx · altamarmx.github.io/WearablesIoTAgentesIA</p>
+</div></aside></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -1123,10 +875,10 @@ Plan de tiempos (20 min):
         previewLinks: false,
 
         // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
+        transition: 'fade',
 
         // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
+        transitionSpeed: 'fast',
 
         // Transition style for full page slide backgrounds
         // (none/fade/slide/convex/concave/zoom)
