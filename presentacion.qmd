@@ -83,36 +83,31 @@ La restricción de energía define el diseño; lo retomamos en la parte 3.
 Fuentes: Abbott, ADA Consumer Guide, teardown de G. Lui (2022).
 :::
 
-## Tus datos no son tuyos {.smaller}
+## Tus datos no son tuyos
 
-::::: {style="font-size: 0.92em"}
-- **Lo que mide no es lo que te muestra**: PPG y acelerómetro a decenas de Hz; tú recibes
-  "pasos", "sueño" y un *readiness score* sin fórmula publicada ni validación clínica
-- **El negocio es la suscripción**: Oura ~6 USD/mes por ver tus propias métricas;
-  Fitbit Premium ~10 USD/mes; Whoop solo vende suscripción (desde ~200 USD/año)
-- **Las APIs entregan datos digeridos, no la señal**; sin señal cruda nadie puede auditar
-  sesgos (tono de piel, tatuajes, movimiento)
-- **Si la empresa cierra, el dispositivo muere**: Amazon Halo (2023) borró los datos;
-  Pebble volvió porque Google liberó su código en 2025
-- **En México son datos personales sensibles** (LFPDPPP): tienes derechos ARCO, pero el
-  "acceso" es un CSV de métricas
-- **Para investigar necesitamos** señal cruda, muestreo conocido, sensores que elegimos y
-  firmware que controlamos: relojes abiertos (Bangle.js, PineTime)… o **construir el propio**
-:::::
+- **Lo que mide no es lo que te muestra**: señal cruda a decenas de Hz; tú recibes un *score* sin fórmula
+- **El negocio es la suscripción**: pagas por ver tus propias métricas
+- **Las APIs entregan datos digeridos**, no la señal: nadie puede auditar sesgos
+- **Si la empresa cierra, el dispositivo muere**
+- **Para investigar**: señal cruda, sensores que elegimos, firmware que controlamos… o **construir el propio**
 
 ::: {.notes}
 2.5 min. El punto: el hardware es el gancho; el producto es el servicio sobre tus
-datos. Precios de 2026 (Fitbit 9.99 USD/mes, Oura 5.99 USD/mes, Whoop One
-199 USD/año). Solo el ECG del Apple Watch pasó por la FDA (2018); "estrés" o
-"body battery" no son medidas clínicas. Fitbit da datos por minuto solo a apps
-personales y exige solicitud para el resto; Garmin reserva su API a empresas.
-Halo: cierre anunciado en abril de 2023, app apagada el 1 de agosto, datos
-borrados. PebbleOS liberado por Google el 27 de enero de 2025. Los estudios
-sobre tono de piel y PPG no coinciden entre sí; el punto es que sin señal cruda
-no se puede verificar. Aseguradoras y programas de bienestar laboral premian por
-"compartir" datos; HIPAA no cubre estas apps. Otras salidas: Apple Salud exporta
-XML, Garmin .FIT, Polar Verity Sense da señal cruda. Cierra con "construir el
-propio" como puente al smartwatch del IER.
+datos. Lo que mide: PPG y acelerómetro a decenas de Hz; lo que muestra: "pasos",
+"sueño", *readiness score* sin fórmula publicada ni validación clínica. Solo el
+ECG del Apple Watch pasó por la FDA (2018); "estrés" o "body battery" no son
+medidas clínicas. Precios de 2026: Fitbit Premium 9.99 USD/mes, Oura 5.99
+USD/mes, Whoop One 199 USD/año (solo vende suscripción). APIs: Fitbit da datos
+por minuto solo a apps personales y exige solicitud para el resto; Garmin
+reserva su API a empresas; sin señal cruda no se pueden auditar sesgos (tono de
+piel, tatuajes, movimiento; los estudios no coinciden entre sí). Cierres: Amazon
+Halo anunciado en abril de 2023, app apagada el 1 de agosto, datos borrados;
+Pebble volvió porque Google liberó PebbleOS el 27 de enero de 2025. En México
+son datos personales sensibles (LFPDPPP): hay derechos ARCO, pero el "acceso" es
+un CSV de métricas. Aseguradoras y programas de bienestar laboral premian por
+"compartir" datos; HIPAA no cubre estas apps. Salidas: Apple Salud exporta XML,
+Garmin .FIT, Polar Verity Sense da señal cruda; relojes abiertos (Bangle.js,
+PineTime). Cierra con "construir el propio" como puente al smartwatch del IER.
 :::
 
 ## Caso IER: smartwatch para confort térmico {.smaller}
