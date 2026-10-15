@@ -1,0 +1,445 @@
+---
+title: "Wearables, IoT y agentes de IA"
+subtitle: "Medir, interpretar y actuar sobre el ambiente construido"
+author: "Guillermo Barrios · Instituto de Energías Renovables, UNAM"
+date: today
+lang: es
+output-file: index
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    footer: "Wearables, IoT y agentes de IA — IER-UNAM"
+    transition: slide
+    code-line-numbers: false
+    preview-links: auto
+---
+
+## ¿De qué va esta plática? {.smaller}
+
+<!--
+Plan de tiempos (20 min):
+  Intro ............... 2 min
+  Parte 1: Wearables .. 7 min  (incluye el smartwatch del IER, 2 láminas)
+  Parte 2: IoT ........ 3 min
+  Parte 3: LLM + IoT .. 6 min  (incluye demo en vivo)
+  Cierre .............. 2 min
+-->
+
+:::: {.columns}
+::: {.column width="60%"}
+1. **Wearables**: qué son, qué tipos hay y qué miden
+2. **IoT**: el contexto donde viven esos datos
+3. **LLMs + IoT**: lenguaje natural como interfaz para sensar y actuar
+   - Demo en vivo: un LLM local controlando un ESP32
+:::
+::: {.column width="40%"}
+<!-- TODO: imagen/foto del wearable o del montaje de la demo -->
+:::
+::::
+
+::: {.notes}
+2 min. Idea central: la convergencia de estas tres tecnologías abre nuevas
+formas de medir, interpretar y actuar sobre el ambiente construido.
+:::
+
+# Parte 1 · Wearables {background-color="#1a3a5c"}
+
+## ¿Qué es un wearable?
+
+- Dispositivo electrónico que se **porta en el cuerpo** y mide de forma continua
+- Tres capacidades básicas: **sensar → procesar → comunicar**
+- Del laboratorio al cuerpo: la medición deja de ser puntual y se vuelve personal y continua
+
+<!-- TODO: línea de tiempo breve (podómetro → Fitbit → Apple Watch → anillos/parches) -->
+
+::: {.notes}
+1 min. Enfatizar la diferencia con un sensor fijo: el wearable sigue a la persona.
+:::
+
+## Tipos de wearables (por dónde se portan) {.smaller}
+
+| Tipo | Ejemplos | Qué miden típicamente |
+|---|---|---|
+| **Muñeca** | Smartwatch, bandas de actividad | FC, actividad, SpO₂, temperatura de piel |
+| **Anillos** | Oura, Galaxy Ring | FC, HRV, sueño, temperatura |
+| **Parches / piel** | Parches de glucosa, electrónica epidérmica | Glucosa, sudor, temperatura local |
+| **Textiles inteligentes** | Camisetas, plantillas con sensores | ECG, respiración, presión plantar |
+| **Cabeza / oído** | Audífonos (*hearables*), diademas EEG, lentes XR | Audio, EEG, movimiento ocular |
+
+::: {.notes}
+2 min. No leer la tabla: destacar 2–3 ejemplos y la tendencia a formatos
+cada vez menos invasivos.
+:::
+
+## Tipos de wearables (por para qué sirven)
+
+- **Bienestar y deporte**: pasos, sueño, entrenamiento
+- **Salud clínica**: monitoreo de glucosa, ECG, detección de caídas
+- **Seguridad laboral**: fatiga, exposición a calor, gases
+- **Investigación**: instrumentar a las personas, no solo a los edificios
+  - … y aquí entra el **confort térmico**
+
+::: {.notes}
+1 min. Puente hacia la siguiente lámina: en investigación los wearables
+comerciales no siempre dan acceso a los datos crudos → desarrollamos el propio.
+:::
+
+## Caso IER: smartwatch para confort térmico {.smaller}
+
+:::: {.columns}
+::: {.column width="55%"}
+- **Motivación**: los modelos adaptativos de confort requieren encuestas
+  **+** mediciones fisiológicas, y no existía un ecosistema abierto que
+  integrara ambas en un solo wearable
+- Hardware abierto (GPLv3), **~49 USD**, sin PCB a la medida:
+  - XIAO **ESP32C3** (WiFi + BLE)
+  - **GY-906** (MLX90614): temperatura de piel por infrarrojo, ±0.5 °C
+  - **MAX30102**: frecuencia cardiaca (fotopletismografía)
+  - Pantalla táctil redonda XIAO (240×240) + motor vibrador
+  - Carcasa impresa en 3D, batería LiPo (~8 h)
+:::
+::: {.column width="45%"}
+<!-- TODO: foto del smartwatch (Fig. 1 del artículo) -->
+:::
+::::
+
+::: {.aside}
+Landa, Barrios, Huelsz (2025). *HardwareX* 22, e00633. [doi:10.1016/j.ohx.2025.e00633](https://doi.org/10.1016/j.ohx.2025.e00633)
+:::
+
+::: {.notes}
+1.5 min. Destacar: componentes comerciales de bajo costo, diseño reproducible,
+archivos en Zenodo (doi:10.5281/zenodo.14835096).
+:::
+
+## ¿Qué recolecta el smartwatch? {.smaller}
+
+:::: {.columns}
+::: {.column width="55%"}
+**Encuesta simplificada de confort (cada hora, con alerta vibratoria):**
+
+- Aislamiento de ropa (*clo*)
+- Actividad metabólica (*met*)
+- Ubicación
+- Sensación térmica y aceptación térmica
+
+**Mediciones fisiológicas:**
+
+- Temperatura de piel en la muñeca
+- Frecuencia cardiaca
+:::
+::: {.column width="45%"}
+**Todo se publica en tiempo real** a una plataforma IoT (**ThingsBoard**, open source)
+
+→ base de datos robusta para **modelos adaptativos de confort térmico**
+
+<!-- TODO: captura del dashboard de ThingsBoard -->
+:::
+::::
+
+::: {.notes}
+1.5 min. La interfaz de encuestas está hecha con LVGL en la pantalla táctil.
+Sensores calibrados contra instrumentos de referencia (termómetro AET-R1B1,
+oxímetro Yonker YK-81C). Este dispositivo ya es, en sí mismo, un nodo IoT:
+puente perfecto a la parte 2.
+:::
+
+<!-- NUEVO · prioridad ALTA para audiencia de ingeniería -->
+
+## Hardware abierto: construyan el suyo {.smaller}
+
+| Plataforma | Chip / radio | Se programa con | Nota |
+|---|---|---|---|
+| **Bangle.js 2** | nRF52, BLE | JavaScript (Espruino) | ~4 semanas de batería; FC validada contra referencia |
+| **PineTime** | nRF52832, BLE | C++ (InfiniTime) | ~30 USD; ideal para aprender BLE/GATT |
+| **LilyGO T-Watch S3** | ESP32-S3, WiFi+BLE | Arduino / MicroPython | WiFi directo a la plataforma; micrófono |
+| **Smartwatch IER** | XIAO ESP32C3 | Arduino + LVGL | ~49 USD, GPLv3, archivos en Zenodo |
+
+- Construir un wearable funcional hoy es un **proyecto de licenciatura**, no de corporación
+- Ojo: validar siempre contra instrumento de referencia (el Bangle.js 2 mide bien FC pero *subregistra pasos* vs. Fitbit, *Sensors* 2025)
+
+::: {.notes}
+1 min. Mensaje para estudiantes: la barrera de entrada es bajísima.
+La fila del smartwatch IER conecta con las láminas anteriores.
+:::
+
+## ¿Qué aprendimos de los wearables?
+
+- Medir es la parte "fácil": el reto es **dar sentido** a los datos
+- Los datos personales + los datos del edificio cuentan una historia completa
+- Falta un eslabón: ¿cómo **interactuamos** con todos estos dispositivos?
+
+::: {.notes}
+1 min. Esta lámina es el puente: los wearables generan datos, el IoT los
+conecta, y la IA los interpreta.
+:::
+
+# Parte 2 · IoT, en breve {background-color="#1a3a5c"}
+
+## Internet de las Cosas en una lámina
+
+```{mermaid}
+flowchart LR
+  A[Sensores<br/>wearables, ambiente] --> B[Microcontrolador<br/>ESP32]
+  B --> C[Conectividad<br/>WiFi · BLE · MQTT]
+  C --> D[Plataforma IoT<br/>ThingsBoard]
+  D --> E[Visualización<br/>y actuación]
+```
+
+- Objetos cotidianos con sensores, cómputo y red
+- En el ambiente construido: monitoreo de temperatura, CO₂, ocupación, energía
+- **El smartwatch ya recorre este camino completo**: ESP32C3 → WiFi → ThingsBoard
+
+::: {.notes}
+1.5 min. Presentar el flujo clásico: sensar → transmitir → almacenar → actuar.
+:::
+
+## El ESP32: el caballo de batalla {.smaller}
+
+:::: {.columns}
+::: {.column width="55%"}
+- Microcontrolador con **WiFi y Bluetooth** integrados
+- Cuesta ~100 pesos
+- Se programa con Arduino / MicroPython
+- Lee sensores y acciona salidas (relés, LEDs, motores)
+:::
+::: {.column width="45%"}
+<!-- TODO: foto del ESP32 / montaje -->
+:::
+::::
+
+::: {.notes}
+1 min. Es la pieza que usaremos en la demo.
+:::
+
+## Lo que el IoT clásico no resuelve
+
+- Cada plataforma tiene su *app*, su *dashboard*, su API
+- Interactuar requiere **programar** o usar interfaces rígidas
+- Dependencia de la **nube**: latencia, privacidad, costo, conectividad
+
+→ ¿Y si pudiéramos simplemente **hablarle** a nuestros dispositivos?
+
+::: {.notes}
+0.5 min. Motivación directa para la parte 3.
+:::
+
+# Parte 3 · IA + IoT: del sensor al agente {background-color="#1a3a5c"}
+
+<!-- NUEVO · prioridad ALTA: el mensaje central para ingeniería electrónica -->
+
+## La IA no es un lugar: es una cadena {.smaller}
+
+| Escalón | Energía | Ejemplo |
+|---|---|---|
+| **En el sensor** | µA | IMU ST LSM6DSOX: árbol de decisión integrado; clasificar actividad agrega ~13 µA |
+| **En el MCU** | mW | ESP32-S3: instrucciones vectoriales + ESP-DL / TFLite Micro (INT8) |
+| **Con microNPU** | mJ → µJ | Arm Ethos-U55: MobileNetV2 de 624→8 ms y 228→3 mJ; MAX78000: 251 µJ por palabra clave |
+| **En el SoC del reloj** | — | Apple S9: Neural Engine → Siri procesada en el dispositivo |
+| **En el gateway / laptop** | W | LLMs locales y agentes (nuestra demo) |
+
+**Cada eslabón hace lo mínimo necesario** y pasa al siguiente solo lo que importa.
+
+::: {.notes}
+2 min. Esta es la lámina conceptual clave para esta audiencia. Aclarar que las
+cifras de Ethos-U55/MAX78000 son benchmarks de fabricante en modelos favorables;
+la tendencia la confirman estudios independientes.
+:::
+
+<!-- NUEVO · prioridad ALTA -->
+
+## Reglas de diseño: energía y memoria
+
+- La energía por inferencia ≈ número de operaciones: **"correr rápido y dormir"**
+- El límite real suele ser la **SRAM** (256–512 kB), no el cómputo
+  → cuantizar a INT8, podar, preferir modelos pequeños (1D-CNN, árboles)
+- **La radio cuesta más que la inferencia local**
+  → transmitir *eventos y clases*, no señales crudas
+
+::: {.notes}
+1 min. Esto justifica decisiones del smartwatch: procesar en el dispositivo y
+publicar datos ya digeridos a ThingsBoard.
+:::
+
+## ¿Qué aporta un LLM al IoT?
+
+- **Lenguaje natural como interfaz**: "¿cuál es la temperatura?, prende el ventilador"
+- **Interpretación**: convertir series de datos en explicaciones y decisiones
+- **Agentes**: el modelo no solo responde, **actúa** — invoca herramientas
+
+Formas de integrarlo:
+
+1. LLM en la **nube** (asistentes comerciales)
+2. LLM **local** en una computadora junto al dispositivo ← *nuestra prueba de concepto*
+3. Modelos pequeños **en el propio microcontrolador** (TinyML, aún limitado)
+
+::: {.notes}
+1.5 min. Distinguir claramente: el LLM no corre en el ESP32; corre al lado,
+y el ESP32 le presta sus "manos y sentidos".
+:::
+
+## Tool calling: las manos del modelo {.smaller}
+
+- El modelo recibe una **lista de funciones disponibles** y decide cuándo llamarlas
+
+```json
+{
+  "name": "leer_temperatura",
+  "description": "Lee el sensor de temperatura del ESP32",
+  "parameters": {}
+}
+```
+
+- Usuario: *"¿hace calor en el laboratorio?"*
+- LLM → llama `leer_temperatura()` → ESP32 responde `29.4` → LLM: *"Sí, hay 29.4 °C…"*
+
+::: {.notes}
+1.5 min. Este es el concepto clave de la plática: el LLM decide, el
+microcontrolador ejecuta.
+:::
+
+<!-- NUEVO · prioridad MEDIA: refuerza por qué tool calling es EL patrón correcto -->
+
+## Los LLMs no saben leer series de tiempo
+
+- Darle números crudos a un LLM produce **errores narrados con confianza**
+- Lo que sí funciona (estado del arte 2025–2026):
+  1. El agente **genera código** para analizar los datos (PHIA, *Nature Communications* 2026)
+  2. **Modelos fundacionales de sensores** convierten la señal en contexto
+     (PH-LLM, *Nature Medicine* 2025; LSM de Google: 40 millones de horas de datos de wearables)
+- Moraleja: **el LLM decide y orquesta; las herramientas miden y calculan**
+  → el mismo principio de nuestra demo
+
+::: {.notes}
+1 min. Conecta la demo casera con la frontera de investigación: es el mismo
+patrón a distinta escala.
+:::
+
+<!-- NUEVO · prioridad MEDIA-ALTA: estándar emergente, directamente aplicable -->
+
+## MCP: hacia una interfaz universal agente ↔ IoT {.smaller}
+
+- **Model Context Protocol**: estándar abierto para exponer herramientas a un LLM
+  (el "USB" de los agentes)
+- **ThingsBoard ya tiene servidor MCP oficial**: consultar dispositivos, telemetría
+  y alarmas en lenguaje natural
+- El **ESP32 puede ser servidor MCP** (JSON-RPC sobre HTTP, o MCP sobre MQTT)
+- Nuestra demo serial implementa el mismo patrón en versión mínima;
+  migrarla a MCP es el paso natural
+
+::: {.notes}
+1 min. Posible gancho: "el smartwatch publica a ThingsBoard, y ThingsBoard ya
+habla con agentes" — el ciclo completo wearable → IoT → agente existe hoy con
+piezas open source.
+:::
+
+## Arquitectura de la prueba de concepto
+
+```{mermaid}
+flowchart LR
+  U[Usuario<br/>lenguaje natural] --> L[LLM local<br/>en la laptop]
+  L -- "tool calling" --> P[Puente en Python]
+  P -- "serial USB" --> E[ESP32]
+  E --> S[Sensores]
+  E --> R[Salidas: LED, relé]
+  E -- "respuesta" --> P --> L --> U
+```
+
+- Todo corre **sin nube**: modelo local + comunicación serial
+- El ESP32 expone sus funciones; el modelo las invoca según la conversación
+
+::: {.notes}
+1 min. Explicar el recorrido de un mensaje de ida y vuelta antes de la demo.
+:::
+
+## Demo en vivo {background-color="#0d2137"}
+
+🔴 *"Enciende el LED y dime la temperatura"*
+
+<!-- TODO:
+  - checklist de la demo: puerto serial, modelo cargado, script corriendo
+  - plan B: video grabado de la demo por si algo falla
+-->
+
+::: {.notes}
+2 min. Tener el video de respaldo listo. Mostrar: (1) lectura de sensor,
+(2) accionar una salida, (3) una pregunta que combine ambas.
+:::
+
+<!-- NUEVO · prioridad MEDIA: dato curioso con buen efecto en audiencia técnica -->
+
+## ¿Qué tan pequeño puede ser un LLM?
+
+- **Laptop / PC**: modelos de 7–14B conversan con fluidez (nuestra demo)
+- **Raspberry Pi 5**: TinyLlama 1.1B ≈ 14 tokens/s — suficiente para un agente simple
+- **ESP32-S3**: un modelo de 260K parámetros corre *dentro del chip* a ~22 tokens/s…
+  pero solo genera cuentos infantiles
+- El agente útil vive hoy en el gateway; el microcontrolador presta
+  **sensores y actuadores**
+
+::: {.notes}
+1 min. Cifras de benchmarks comunitarios (llama.cpp/Ollama), cambian con cada
+versión. El punto no es el número exacto sino los órdenes de magnitud.
+:::
+
+## Consideraciones y límites
+
+- **Latencia**: un LLM local responde en segundos, no milisegundos
+- **Confiabilidad**: puede elegir mal la herramienta o **narrar con confianza datos erróneos**
+- **Seguridad**: dar *escritura* a un agente (accionar salidas) amplía la superficie
+  de ataque — p. ej., inyección de prompts
+- **Privacidad**: los datos fisiológicos son datos personales **sensibles**
+- A favor: inferencia local = privacidad, sin costos de API, funciona sin internet
+
+::: {.notes}
+1 min. Honestidad técnica: es una prueba de concepto, no un producto. Mitigaciones:
+permisos mínimos (API key de solo lectura), TLS en MQTT, validar qué tools se exponen.
+:::
+
+# Cierre {background-color="#1a3a5c"}
+
+<!-- NUEVO · prioridad ALTA para universidad tecnológica: "ustedes pueden entrar aquí" -->
+
+## La oportunidad para México {.smaller}
+
+**Hay producción académica real:**
+
+- Tec de Monterrey: biofeedback EEG en tiempo real para aprendizaje (random forest, 92.7%)
+- CICESE: reconocimiento de marcha y wearables para personas con demencia
+- UNAM: alerta temprana de COVID-19 con datos de smartwatch
+- U. Panamericana: dataset UP-Fall de detección de caídas, muy reutilizado
+
+**…pero concentrada en prototipos ESP32 + MQTT de signos vitales. Nichos abiertos:**
+
+- TinyML en wearables **con validación** contra equipo de referencia
+- Agentes LLM locales sobre plataformas IoT (ThingsBoard + MCP)
+- Confort térmico personal en **climas mexicanos**
+- → justo la intersección de esta plática
+
+::: {.notes}
+1.5 min. Verificar DOI/año de las citas mexicanas antes de dejarlas en la lámina.
+Mensaje a estudiantes: estos nichos son tesis y artículos al alcance de una
+universidad tecnológica.
+:::
+
+## Conclusiones
+
+- Los **wearables** llevan la medición al cuerpo: continua y personal
+- El **IoT** conecta esos datos con el ambiente construido
+- Los **LLMs** agregan la pieza que faltaba: interpretar y actuar en lenguaje natural
+- Todo esto es posible hoy con **hardware de bajo costo y modelos abiertos**
+
+## ¡Gracias! {.center}
+
+**gbv@ier.unam.mx**
+
+- Artículo: [doi:10.1016/j.ohx.2025.e00633](https://doi.org/10.1016/j.ohx.2025.e00633) (open access)
+- Archivos del smartwatch: [doi:10.5281/zenodo.14835096](https://doi.org/10.5281/zenodo.14835096)
+
+<!-- TODO: QR al repositorio del código de la demo LLM+ESP32 -->
+
+::: {.notes}
+Preguntas. Posibles temas: qué modelo local se usó, tamaño del modelo,
+hardware mínimo, cómo escalar a más dispositivos.
+:::
